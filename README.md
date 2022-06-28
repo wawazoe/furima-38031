@@ -32,7 +32,7 @@
 | delivery_charge_id | integer    | null: false                    |
 | duration_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
+| user               | reference | null: false, foreign_key: true |
 
 
 ### Association
