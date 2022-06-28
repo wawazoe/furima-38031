@@ -32,7 +32,7 @@
 | delivery_charge_id | integer    | null: false                    |
 | duration_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | reference | null: false, foreign_key: true |
+| user               | reference | null: false, foreign_key: true. |
 
 
 ### Association
@@ -44,7 +44,7 @@
 
 | Column      | Type      | Options                        |
 |-------------|-----------|--------------------------------|
-| nickname_id | reference | null: false, foreign_key: true |
+| nickname    | reference | null: false, foreign_key: true |
 | item        | reference | null: false, foreign_key: true |
 
 
@@ -58,7 +58,7 @@
 | Column         | Type       | Options                        |
 |----------------|------------|--------------------------------|
 | post_code      | string     | null: false                    |
-| area_id        | integer    | null: false                    |
+| area_id        | integer    | null: false, foreign_key: true |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
