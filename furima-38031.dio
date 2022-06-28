@@ -25,17 +25,14 @@
                 <mxCell id="83" value="itemsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
                     <mxGeometry x="460" y="72" width="300" height="210" as="geometry"/>
                 </mxCell>
-                <mxCell id="84" value="name&#10;text&#10;area　外部&#10;category　外部&#10;condition　外部&#10;delivery　外部&#10;duration　外部&#10;price&#10;user&#10;&#10;has_one :buy&#10;belongs_to :user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="83">
+                <mxCell id="84" value="name&#10;text&#10;area_id　&#10;category_id　&#10;condition_id&#10;delivery_id&#10;duration_id&#10;price&#10;user　外部&#10;&#10;has_one :buy&#10;belongs_to :user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="83">
                     <mxGeometry y="26" width="300" height="184" as="geometry"/>
                 </mxCell>
                 <mxCell id="87" value="buysテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
-                    <mxGeometry x="140" y="360" width="160" height="254" as="geometry"/>
+                    <mxGeometry x="140" y="360" width="160" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="98" value="nickname_id　外部&#10;item　外部&#10;&#10;belongs_to :items&#10;has_one :shipping&#10;belongs_to :users" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="87">
+                <mxCell id="98" value="user　外部&#10;item　外部&#10;&#10;belongs_to :items&#10;has_one :shipping&#10;belongs_to :users" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="87">
                     <mxGeometry y="26" width="160" height="114" as="geometry"/>
-                </mxCell>
-                <mxCell id="89" value="nickname　外部&#10;item　外部&#10;&#10;belongs_to :item&#10;has_one :shipping&#10;belongs_to :user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="87">
-                    <mxGeometry y="140" width="160" height="114" as="geometry"/>
                 </mxCell>
                 <mxCell id="91" value="shippingテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
                     <mxGeometry x="414" y="360" width="160" height="190" as="geometry"/>
