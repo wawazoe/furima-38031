@@ -32,7 +32,7 @@
 | delivery_charge_id | integer    | null: false                    |
 | duration_id        | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user               | reference | null: false, foreign_key: true. |
+| user               | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -42,10 +42,10 @@
 
 ## buys
 
-| Column      | Type      | Options                        |
-|-------------|-----------|--------------------------------|
-| nickname    | reference | null: false, foreign_key: true |
-| item        | reference | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+|----------------|------------|--------------------------------|
+| nickname_id    | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -55,15 +55,15 @@
 
 ## shippings
 
-| Column         | Type       | Options                        |
-|----------------|------------|--------------------------------|
-| post_code      | string     | null: false                    |
-| area_id        | integer    | null: false, foreign_key: true |
-| municipalities | string     | null: false                    |
-| address        | string     | null: false                    |
-| building_name  | string     |                                |
-| phone_number   | string     | null: false                    |
-| buy            | reference  | null: false, foreign_key: true |
+| Column         | Type        | Options                        |
+|----------------|-------------|--------------------------------|
+| post_code      | string      | null: false                    |
+| area_id        | integer     | null: false                    |
+| municipalities | string      | null: false                    |
+| address        | string      | null: false                    |
+| building_name  | string      |                                |
+| phone_number   | string      | null: false                    |
+| buy            | references  | null: false, foreign_key: true |
 
 
 
