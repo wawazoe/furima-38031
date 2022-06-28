@@ -1,22 +1,22 @@
 ## users
 
-| Column                 | Type    | Option      |
-|------------------------|---------|-------------|
-| nickname               | string  | null: false |
-| encrypted_password     | string  | null: false |
-| email                  | string  | null: false |
-| birth_day              | integer | null: false |
-| first_name             | string  | null: false |
-| last_name              | string  | null: false |
-| first_kana             | string  | null: false | 
-| last_kana              | string  | null: false | 
+| Column                 | Type    | Option                    |
+|------------------------|---------|---------------------------|
+| nickname               | string  | null: false               |
+| encrypted_password     | string  | null: false, unique: true |
+| email                  | string  | null: false               |
+| birth_day              | integer | null: false               |
+| first_name             | string  | null: false               |
+| last_name              | string  | null: false               |
+| first_kana             | string  | null: false               | 
+| last_kana              | string  | null: false               | 
  
 
 
 ### Association
 
-- has_many :item
-- has_many :buy
+- has_many :items
+- has_many :buys
 
 
 
@@ -42,10 +42,10 @@
 
 ## buys
 
-| Column   | Type      | Options                        |
-|----------|-----------|--------------------------------|
-| nickname | reference | null: false, foreign_key: true |
-| item     | reference | null: false, foreign_key: true |
+| Column      | Type      | Options                        |
+|-------------|-----------|--------------------------------|
+| nickname_id | reference | null: false                    |
+| item        | reference | null: false, foreign_key: true |
 
 
 ### Association
@@ -58,7 +58,7 @@
 | Column         | Type       | Options                        |
 |----------------|------------|--------------------------------|
 | post_code      | string     | null: false                    |
-| area           | references | null: false, foreign_key: true |
+| area_id        | integer    | null: false                    |
 | municipalities | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
