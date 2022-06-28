@@ -1,24 +1,66 @@
-# README
+## users
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column                 | Type     | Option      |
+|------------------------|----------|-------------|
+| nickname               | string.  | null: false |
+| encrypted_password     | string.  | null: false |
+| email                  | string.  | null: false |
+ 
 
-Things you may want to cover:
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :item
+- has_many :buy
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+## items
 
-* How to run the test suite
+| Column          | Type       | Options     |
+|-----------------|------------|-------------|
+| name            | string     | null: false |
+| text            | text       | null: false | 
+| area            | integer    | null: false |
+| category        | integer    | null: false |
+| condition       | integer    | null: false |
+| delivery_charge | integer    | null: false |
+| duration        | integer    | null: false |
+| price           | integer    | null: false |
+| user            | references | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### Association
+- has_one :buy
+- belongs_to :user
 
-* ...
+
+## buys
+
+| Column   | Type   | Options.    |
+|----------|--------|-------------|
+| nickname | string | null: false |
+| item     | string | null: false |
+
+
+### Association
+- belongs_to :item
+- belongs_to :user
+- has_one :shipping
+
+## shippings
+
+| Column         | Type       | Options                        |
+|----------------|------------|--------------------------------|
+| post_code      | integer    | null: false                    |
+| prefectures    | integer    | null: false                    |
+| municipalities | string     | null: false                    |
+| address        | string     | null: false                    |
+| building_name  | string     |  |
+| phone_number   | integer    | null: false                    |
+| buy            | references | null: false, foreign_key: true |
+
+
+
+### Association
+- belongs_to :buy
