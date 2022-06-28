@@ -3,9 +3,9 @@
 | Column                 | Type    | Option                    |
 |------------------------|---------|---------------------------|
 | nickname               | string  | null: false               |
-| encrypted_password     | string  | null: false, unique: true |
-| email                  | string  | null: false               |
-| birth_day              | integer | null: false               |
+| encrypted_password     | string  | null: false               |
+| email                  | string  | null: false, unique: true |
+| birth_day              | date    | null: false               |
 | first_name             | string  | null: false               |
 | last_name              | string  | null: false               |
 | first_kana             | string  | null: false               | 
@@ -22,17 +22,17 @@
 
 ## items
 
-| Column             | Type       | Options     |
-|--------------------|------------|-------------|
-| name               | string     | null: false |
-| text               | text       | null: false | 
-| area_id            | integer    | null: false |
-| category_id        | integer    | null: false |
-| condition_id       | integer    | null: false |
-| delivery_charge_id | integer    | null: false |
-| duration_id        | integer    | null: false |
-| price              | integer    | null: false |
-| user               | references | null: false |
+| Column             | Type       | Options                        |
+|--------------------|------------|--------------------------------|
+| name               | string     | null: false                    |
+| text               | text       | null: false                    | 
+| area_id            | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| duration_id        | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -44,7 +44,7 @@
 
 | Column      | Type      | Options                        |
 |-------------|-----------|--------------------------------|
-| nickname_id | reference | null: false                    |
+| nickname_id | reference | null: false, foreign_key: true |
 | item        | reference | null: false, foreign_key: true |
 
 
