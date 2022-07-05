@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  
+  before_action :require_login, except: [:new]
+
   def index
     @item = Item.includes(:user)
     @items = Item.order("created_at DESC")
@@ -21,6 +22,8 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+
+
   end
 
   private
@@ -29,4 +32,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :text, :area_id, :category_id, :condition_id, :delivery_charge_id, :duration_id, :price, :user,).merge(user_id: current_user.id)
   end
 
+  def require_login
+       unless user_signed_in?
+         redirect_to user_session_path
+       end
+      end
 end
