@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :require_login, except: [:new]
+  before_action :require_login, only: [:new, :create]
+
 
   def index
-    @item = Item.includes(:user)
     @items = Item.order("created_at DESC")
   end
   
   def new
-    @items = Item.new
     @item = Item.new
   end
 
@@ -31,4 +30,5 @@ class ItemsController < ApplicationController
          redirect_to user_session_path
        end
       end
+
 end
