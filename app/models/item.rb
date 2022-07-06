@@ -7,15 +7,18 @@ class Item < ApplicationRecord
  belongs_to :delivery_charge
  belongs_to :area
  belongs_to :duration
+ has_one_attached :image
 
- with_options :presence true format:{with: /\A[0-9]+\z/, message: 'Price is invalid. Input half-width characters'} do
-  validates :price
- end               //syntax error出た
- validates :category_id,        numericality: { other_than: 1 , message: "can't be blank"} 
- validates :condition_id,       numericality: { other_than: 1 , message: "can't be blank"}
- validates :delivery_charge_id, numericality: { other_than: 1 , message: "can't be blank"}
- validates :area_id,            numericality: { other_than: 0 , message: "can't be blank"} 
- validates :duration_id,        numericality: { other_than: 1 , message: "can't be blank"}
+
+ validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+
+ with_options presence: true,numericality: { other_than: 1 , message: "can't be blank"} do
+  validates :category_id
+  validates :condition_id
+  validates :delivery_charge_id
+  validates :duration_id
+ end
+ validates :area_id, presence: true, numericality: { other_than: 0 , message: "can't be blank"} 
 
 
 end
