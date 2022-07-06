@@ -27,31 +27,31 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Text can't be blank")
     end
     it 'areaの値が0では出品できない' do
-      @item.area_id = ''
+      @item.area_id = '0'
       @item.valid?
       expect(@item.errors.full_messages).to include("Area can't be blank")
     end
     it 'categoryの値が1では出品できない' do
-      @item.category_id = ''
+      @item.category_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
     it 'conditionの値が1では出品できない' do
-      @item.condition_id = ''
+      @item.condition_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
     it 'delivery_chargeの値が1では出品できない' do
-      @item.delivery_charge_id = ''
+      @item.delivery_charge_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
     end
     it 'durationの値が1では出品できない' do
-      @item.duration_id = ''
+      @item.duration_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Duration can't be blank")
     end
-    it 'priceの値が1では出品できない' do
+    it 'priceが空では出品できない' do
       @item.price = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
