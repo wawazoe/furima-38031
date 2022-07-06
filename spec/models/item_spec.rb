@@ -26,32 +26,32 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Text can't be blank")
     end
-    it 'areaが空では出品できない' do
+    it 'areaの値が0では出品できない' do
       @item.area_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Area can't be blank")
     end
-    it 'categoryが空では出品できない' do
+    it 'categoryの値が1では出品できない' do
       @item.category_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
-    it 'conditionが空では出品できない' do
+    it 'conditionの値が1では出品できない' do
       @item.condition_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
-    it 'delivery_chargeが空では出品できない' do
+    it 'delivery_chargeの値が1では出品できない' do
       @item.delivery_charge_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
     end
-    it 'durationが空では出品できない' do
+    it 'durationの値が1では出品できない' do
       @item.duration_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Duration can't be blank")
     end
-    it 'priceが空では出品できない' do
+    it 'priceの値が1では出品できない' do
       @item.price = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
@@ -61,6 +61,19 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is invalid")
     end
+
+    it '価格が300円未満では出品できない' do
+      @item.price = '100'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is invalid")
+    end
+
+    it '価格が9_999_999円を超えると出品できない' do
+      @item.price = '100000000'
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is invalid")
+    end
+
     it 'userが結びついていなければ出品できない' do
       @item.user = nil
       @item.valid?
