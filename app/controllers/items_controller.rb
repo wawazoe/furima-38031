@@ -1,20 +1,14 @@
 class ItemsController < ApplicationController
   before_action :require_login, except: [:new]
-  #before_action :authenticate_user!, except: [:create]
-
 
   def index
     @item = Item.includes(:user)
     @items = Item.order("created_at DESC")
-
-
   end
   
   def new
     @items = Item.new
     @item = Item.new
-
-
   end
 
   def create
