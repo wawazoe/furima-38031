@@ -2,7 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- # has_many :items　　//未実装のため
+  has_many :items
  # has_many :buys    //未実装のため
 
   validates :nickname,   presence: true
