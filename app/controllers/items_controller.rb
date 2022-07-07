@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
 
   def index
-   # @items = Item.order("created_at DESC")    商品一覧機能の時に必要
+    @items = Item.order("created_at DESC")    
   end
   
   def new
@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
+
   def show
     @item = Item.find(params[:id])
   end
@@ -32,7 +31,7 @@ class ItemsController < ApplicationController
   end
 end
 
->>>>>>> acabf76 (商品一覧表示　実装)
+
   private
 
   def item_params
