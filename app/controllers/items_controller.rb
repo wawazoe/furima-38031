@@ -19,6 +19,20 @@ class ItemsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+=======
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    unless user_signed_in?
+      redirect_ to action: :index
+  end
+end
+
+>>>>>>> acabf76 (商品一覧表示　実装)
   private
 
   def item_params
