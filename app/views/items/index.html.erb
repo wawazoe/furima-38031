@@ -119,12 +119,13 @@
         <%= link_to item_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
-          <%# 商品が売れていればsold outを表示しましょう %>
+
+          <%# 商品が売れていればsold outを表示しましょう　＊商品購入機能実施後 %>
+
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <%# //商品が売れていればsold outを表示しましょう %>
-
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -138,9 +139,12 @@
             </div>
           </div>
         </div>
+       
         <% end %>
       </li>
+
       <% end %>
+
       <% if @items [0] == nil %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -162,6 +166,7 @@
       <% end %>
     </ul>
   </div>
+
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
