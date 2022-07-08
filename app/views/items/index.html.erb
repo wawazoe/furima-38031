@@ -55,6 +55,7 @@
       </li>
     </ul>
   </div>
+
   <div class='ad-contents'>
     <h2 class='ad-title'>
       会員数日本一位
@@ -115,10 +116,12 @@
     <ul class='item-lists'>
     <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
+
           <%# 商品が売れていればsold outを表示しましょう　＊商品購入機能実施後 %>
+
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
@@ -139,7 +142,9 @@
        
         <% end %>
       </li>
-       <% end %>
+
+      <% end %>
+
       <% if @items [0] == nil %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -161,7 +166,7 @@
       <% end %>
     </ul>
   </div>
-  
+
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
