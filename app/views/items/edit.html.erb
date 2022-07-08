@@ -46,12 +46,16 @@
           カテゴリー
           <span class="indispensable">必須</span>
         </div>
+
         <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
+
         <%= f.collection_select(:condition_id, Condition.all, :id, :name, {}, {class:"select-box", id:"item-sales-status"}) %>
+
       </div>
     </div>
 
@@ -65,17 +69,23 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
+
         <%= f.collection_select(:delivery_charge_id, DeliveryCharge.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
+
         <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
+
         <%= f.collection_select(:duration_id, Duration.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+
       </div>
     </div>
 
@@ -128,7 +138,9 @@
     </div>
     <div class="sell-btn-contents">
       <%= f.submit "変更する" ,class:"sell-btn" %>
+
       <%=link_to 'もどる', item_path, class:"back-btn" %>
+
     </div>
   </div>
   <% end %>
