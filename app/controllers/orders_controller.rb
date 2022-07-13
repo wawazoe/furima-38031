@@ -12,9 +12,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-   # binding.pry
     @buy_shipping = BuyShipping.new(buy_params)
     if @buy_shipping.valid?
+      pay_item
        @buy_shipping.save
         redirect_to root_path
     else
@@ -31,4 +31,13 @@ class OrdersController < ApplicationController
     def item_set
      @item = Item.find(params[:item_id])
    end
+
+   def pay_item
+    Payjp.api_key = "sk_test_1c3757206140ac7ea7727916" 
+    Payjp::Charge.create(
+      amount: order_params[:price], 
+      card: order_params[:token],    
+      currency: 'jpy'                
+    )
+  end
 end
