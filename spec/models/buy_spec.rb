@@ -5,7 +5,6 @@ RSpec.describe BuyShipping, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @buy_shipping = FactoryBot.build(:buy_shipping, user_id: user.id, item_id: item.id)
-    #binding.pry
     sleep 0.1
   end
 
