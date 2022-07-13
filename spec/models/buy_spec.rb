@@ -5,14 +5,18 @@ RSpec.describe BuyShipping, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     @buy_shipping = FactoryBot.build(:buy_shipping, user_id: user.id, item_id: item.id)
+    #binding.pry
     sleep 0.1
   end
 
   describe '商品購入' do
     context '商品購入できる時' do
       it 'すべての項目が正しく入力されていれば購入できる' do
+        expect(@buy_shipping).to be_valid
       end
       it '建物名は空でも購入できる' do
+        @buy_shipping.building_name = ''
+        expect(@buy_shipping).to be_valid
     end
 end
  context '商品購入できない時' do
@@ -26,13 +30,11 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Post code is invalid")
   end
-
   it '郵便番号が半角ハイフンを含む形でなければ購入できない' do
     @buy_shipping.post_code = '1111111'
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Post code is invalid")
   end
-
    it '都道府県の値が0では購入できない' do
      @buy_shipping.area_id = '0'
      @buy_shipping.valid?
@@ -54,7 +56,7 @@ end
      expect(@buy_shipping.errors.full_messages).to include("Phone number can't be blank")
    end
    it '電話番号は - を含むと購入できない' do
-    @buy_shipping.phone_number = '0-0'
+    @buy_shipping.phone_number = '090-0000-1111'
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid")
    end
@@ -73,8 +75,6 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid")
   end
-
-
   it 'itemが紐づいていないと購入できない' do
     @buy_shipping.item_id = nil
     @buy_shipping.valid?
@@ -85,7 +85,6 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("User can't be blank")
   end
-
   it 'Tokenが空では購入できない' do
     @buy_shipping.token = nil
     @buy_shipping.valid?
