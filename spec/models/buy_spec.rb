@@ -26,6 +26,13 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Post code is invalid")
   end
+
+  it '郵便番号が半角ハイフンを含む形でなければ購入できない' do
+    @buy_shipping.post_code = '1111111'
+    @buy_shipping.valid?
+    expect(@buy_shipping.errors.full_messages).to include("Post code is invalid")
+  end
+
    it '都道府県の値が0では購入できない' do
      @buy_shipping.area_id = '0'
      @buy_shipping.valid?
@@ -66,6 +73,7 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid")
   end
+
 
   it 'itemが紐づいていないと購入できない' do
     @buy_shipping.item_id = nil

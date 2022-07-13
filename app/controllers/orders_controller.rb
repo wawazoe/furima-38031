@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.id != @item.user.id && @item.buy.blank?
-      #ログインユーザーのidが商品のidと異なる
        @buy_shipping = BuyShipping.new
     else
        redirect_to root_path
