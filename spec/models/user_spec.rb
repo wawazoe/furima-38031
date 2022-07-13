@@ -34,10 +34,6 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
-
-
-
-
     it '英字のみのパスワードでは登録できない' do
       @user.password = 'aaaaaa'
       @user.valid?
@@ -53,11 +49,6 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password 登録は出来ません')
     end
-
-
-
-
-
     it 'emailが空では登録できない' do
       @user.email = ''
       @user.valid?
