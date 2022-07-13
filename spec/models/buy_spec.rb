@@ -2,13 +2,18 @@ require 'rails_helper'
 
 RSpec.describe BuyShipping, type: :model do
   before do
-    @buy_shipping = FactoryBot.build(:buy_shipping)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @buy_shipping = FactoryBot.build(:buy_shipping, user_id: user.id, item_id: item.id)
+    sleep 0.1
   end
 
   describe '商品購入' do
     context '商品購入できる時' do
       it 'すべての項目が正しく入力されていれば購入できる' do
       end
+      it '建物名は空でも購入できる' do
+    end
 end
  context '商品購入できない時' do
    it '郵便番号が空では購入できない' do
@@ -21,8 +26,8 @@ end
     @buy_shipping.valid?
     expect(@buy_shipping.errors.full_messages).to include("Post code is invalid")
   end
-   it '都道府県が空では購入できない' do
-     @buy_shipping.area_id = ''
+   it '都道府県の値が0では購入できない' do
+     @buy_shipping.area_id = '0'
      @buy_shipping.valid?
      expect(@buy_shipping.errors.full_messages).to include("Area can't be blank")
    end
@@ -41,6 +46,11 @@ end
      @buy_shipping.valid?
      expect(@buy_shipping.errors.full_messages).to include("Phone number can't be blank")
    end
+   it '電話番号は - を含むと購入できない' do
+    @buy_shipping.phone_number = '0-0'
+    @buy_shipping.valid?
+    expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid")
+   end
    it '電話番号は10桁以上でなければでは購入できない' do
     @buy_shipping.phone_number = '090'
     @buy_shipping.valid?
@@ -57,6 +67,16 @@ end
     expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid")
   end
 
+  it 'itemが紐づいていないと購入できない' do
+    @buy_shipping.item_id = nil
+    @buy_shipping.valid?
+    expect(@buy_shipping.errors.full_messages).to include("Item can't be blank")
+  end
+  it 'userが紐づいていないと購入できない' do
+    @buy_shipping.user_id = nil
+    @buy_shipping.valid?
+    expect(@buy_shipping.errors.full_messages).to include("User can't be blank")
+  end
 
   it 'Tokenが空では購入できない' do
     @buy_shipping.token = nil
