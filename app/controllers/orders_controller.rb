@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
 
 
   def index
-    if current_user.id != @item.id && @item.buy.blank?
+    if current_user.id != @item.user.id && @item.buy.blank?
+      #ログインユーザーのidが商品のidと異なる
        @buy_shipping = BuyShipping.new
     else
        redirect_to root_path
@@ -14,7 +15,7 @@ class OrdersController < ApplicationController
   def create
     @buy_shipping = BuyShipping.new(buy_params)
     if @buy_shipping.valid?
-      pay_item
+       pay_item
        @buy_shipping.save
         redirect_to root_path
     else
@@ -33,11 +34,11 @@ class OrdersController < ApplicationController
    end
 
    def pay_item
-    Payjp.api_key = "sk_test_1c3757206140ac7ea7727916" 
+    Payjp.api_key = "sk_test_1c3757206140ac7ea7727916"
     Payjp::Charge.create(
-      amount: order_params[:price], 
-      card: order_params[:token],    
-      currency: 'jpy'                
+      amount: @item.price,
+      card: buy_params[:token],
+      currency: 'jpy'
     )
   end
 end
