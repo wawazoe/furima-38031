@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :nickname,   presence: true
   validates :birthday,   presence: true
 
-  with_options presence: true, format:{with: /\A[a-z0-9\d]{6,99}+\z/i, message: '登録は出来ません'} do
+  with_options presence: true, format:{with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: '登録は出来ません'} do
   validates :password
   end
 
