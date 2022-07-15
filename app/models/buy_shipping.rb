@@ -5,7 +5,7 @@ class BuyShipping
 
  with_options presence: true do
   validates :post_code,    format: {with: /\A\d{3}[-]\d{4}\z/ } 
-  validates :area_id,      numericality: { other_than: 0 , message: "can't be blank"} 
+  validates :area_id,      numericality: { other_than: 0 , message: "を入力してください"} 
   validates :municipalities
   validates :address
   validates :phone_number, format: {with: /\A\d{10,11}\z/ }

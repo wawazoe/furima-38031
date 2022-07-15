@@ -47,7 +47,7 @@ describe 'ユーザー新規登録' do
     it '全角文字を含むパスワードでは登録できない' do
       @user.password = '１aaaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password 登録は出来ません')
+      expect(@user.errors.full_messages).to include('Password is invald')
     end
     it 'emailが空では登録できない' do
       @user.email = ''
@@ -94,22 +94,22 @@ describe 'ユーザー新規登録' do
     it 'first_nameが全角入力でなければ登録できないこと' do
       @user.first_name = 'ｱｲｳｴｵ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name is invalid")
+      expect(@user.errors.full_messages).to include('First name is invalid')
     end
     it 'last_nameが全角入力でなければ登録できないこと' do
       @user.last_name = 'ｱｲｳｴｵ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid")
+      expect(@user.errors.full_messages).to include('Last name is invalid')
     end
     it 'first_kanaが全角カタカナでなければ登録できないこと' do
       @user.first_kana = 'ｱｲｳｴｵ'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First kana is invalid")
+      expect(@user.errors.full_messages).to include('First kana is invalid')
     end
     it 'last_kanaが全角カタカナでなければ登録できないこと' do
       @user.last_kana = 'ｱｲｳｴｵ' 
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last kana is invalid")
+      expect(@user.errors.full_messages).to include('Last kana is invalid')
     end
   end
  end
